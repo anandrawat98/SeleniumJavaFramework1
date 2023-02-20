@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite1">
+  <test thread-count="5" name="Test1">
+<groups>
+<!-- 
+<define name="Regression1"> <! this is to create meta grouping 
+<include name="smoke"></include>
+<include name="regression"></include>
+</define>   -->
+
+<!-- grouping as regular expressions include name="scrum.*"-->
+<run>
+<include name="scrum.*"></include>
+<!-- class level grouping include name="Allclasslevelgroups"-->
+<include name="Allclasslevelgroups"></include>
+<exclude name="kanban.*"></exclude>
+</run>
+</groups>
+    <classes>
+      <class name="TestNGPriority.TestngGroupingDemo"/>
+    </classes>
+  </test> <!-- Test1 -->
+</suite> <!-- Suite1 -->
