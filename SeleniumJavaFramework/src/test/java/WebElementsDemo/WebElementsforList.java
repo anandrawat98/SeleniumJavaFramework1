@@ -26,25 +26,34 @@ public class WebElementsforList {
 		//250 ms is polling for implicit waits
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 		driver.manage().window().maximize();
-		String[] itemsneeded= {"Cauliflower","Cucumber"};
+
 		List<WebElement> products = driver.findElements(By.cssSelector("h4.product-name"));
-		
-		
-		for(int i=0;i<products.size();i++)
+		String[] itemsneeded= {"Cauliflower","Cucumber","Beetroot"};
+		int j=0;
+		for(int i=1;i<products.size();i++)
 		{
-			String name=products.get(i).getText();
+			String[] name=products.get(i).getText().split("-");
+			String formattedname =	name[0].trim();
+			System.out.println(formattedname);
 			//convert the text what you get is sorted and easy to match name
 			//covert the array in to arrayList for easy search
 			//check the element you got is match or not
 			List itemsneedlist=Arrays.asList(itemsneeded);
-			
-			
-			if(itemsneedlist.contains(name))
+
+
+
+			if(itemsneedlist.contains(formattedname))
 			{
-				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
-				
+				j++;
+				driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+				//System.out.println("Items in list"+itemsneedlist);
+				if(j==3)
+				{
+					break;
+				}
 			}
 		}
+      driver.close();
 	}
 
 }
