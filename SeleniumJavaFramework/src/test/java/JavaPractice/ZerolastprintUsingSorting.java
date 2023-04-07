@@ -23,7 +23,7 @@ public class ZerolastprintUsingSorting {
 			System.out.print(" "+a[i]); // printing the array in descending order
 			if(a[i]==0)
 			{
-				System.out.println(""+a[i]);
+				System.out.println("zero"+a[i]);
 			}
 			
 		}
